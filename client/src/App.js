@@ -1,0 +1,22 @@
+import './App.css';
+import React, {useEffect, useState} from 'react';
+
+function App() {
+
+  const [message, setMessage] = useState('');
+
+  useEffect(()=>{
+
+    fetch('http://localhost:9000/')
+    .then(response => response.json())
+    .then (data => setMessage(data.message)); // calling set message to set the state (message) as data.message)
+  },[])
+  return (
+    <>
+    <h1>Intro to Express</h1>
+    <p> the server said: {message}</p>
+    </>
+  );
+}
+
+export default App;
